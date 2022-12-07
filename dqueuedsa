@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<conio.h>
+struct node
+{
+    char name[10];
+    int id;
+}element[10];
+int main()
+{
+    int ch,rear,front;
+    front=0;
+    rear=0;
+    printf("\nenter the total number of elements:\n");
+    int limit;
+    scanf("%d",&limit);
+    while(ch!=5)
+    {    
+        printf("\n1.insert\n2.delete\n3.insert from front\n4.delete from rear\n5.exit");
+        printf("\nenter your choice\n");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+        case 1:if(rear>limit)
+        {
+            printf("\nqueue is full no more values can be added....");
+        }
+        else{
+            printf("\nenter name\n");
+            scanf("%s",&element[rear++].name);
+            printf("\nenter id\n");
+            scanf("%d",&element[rear++].id);
+            printf("successfully inserted...");
+        }
+        break;
+        case 2:if(front>rear)
+        {
+            printf("\nqueue is empty values can be added...");
+            return -999;
+        }
+        else{
+            printf("%s%d",element[front++].name,element[front++].id);
+            printf("\nvalues are deleted from the front....");
+        }
+        break;
+        case 3:if(front>limit)
+        {
+            printf("\nqueue is full no more values can be added...");
+        }
+        else{
+            printf("\nenter name\n");
+            scanf("%s",&element[--front].name);
+            printf("\nenter id\n");
+            scanf("%d",&element[--front].id);
+            printf("successfully inserted...");
+        }
+        break;
+        case 4:if(rear<front)
+        {
+            printf("\nqueue is empty values can be added...");
+            return -999;
+        }
+        else{
+            --rear;
+        }
+        break;
+        default:printf("invalid choice....");
+        break;
+        }
+    }
+    return 0;
+}
