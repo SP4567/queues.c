@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<string.h>
+struct queue
+{
+   char name[10];
+   int id;
+}element[10];
+int main()
+{
+    int ch,front=0,rear=0;
+    while (ch!=4)
+    {
+        printf("1.insert\n2.delete\n3.display\n4.exit\n");
+        printf("enter your choice:\n");
+        scanf("%d",&ch);
+        switch (ch)
+        {
+        case 1:if(front==1&&rear==9){
+        printf("queue is full no more values can be added");
+        }
+        else{
+            printf("\nenter name:\n");
+            scanf("%s",&element[rear++].name);
+            printf("\nenter id:\n");
+            scanf("%d",&element[rear++].id);
+            printf("\nsuccessfully entered!!");
+        }
+        break;
+        case 2:if (front==rear)
+        {
+            front=rear=0;
+            printf("queue is empty values can be added front the front end");
+        }
+        else
+        {
+            if(front==9)
+            front=0;
+            else
+            front=front+1;
+        }
+        break;
+        case 3:
+        if(front==rear){
+        printf("queue is empty..");
+        }
+        else
+        front=0;
+        while (front<=rear)
+        {
+            printf("names is:%s\n \nid is:%d\n",element[front++].name,element[front++].id);
+        }
+        break;
+        default:printf("invalid choice...");
+            break;
+        }
+    }
+    return 0;
+}
